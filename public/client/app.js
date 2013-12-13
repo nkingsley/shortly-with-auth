@@ -2,11 +2,11 @@ angular.module('shortlyApp', ['ngRoute'])
 .config(function($routeProvider) {
   $routeProvider
   .when('/', {
-    templateUrl: 'mainTemplate',
+    templateUrl: 'client/templates/mainTemplate.html',
     controller: 'mainController'
   })
   .when('/shorten', {
-    templateUrl: 'shortenTemplate',
+    templateUrl: 'client/templates/shortenTemplate.html',
     controller: 'shortenController'
   })
   .otherwise({

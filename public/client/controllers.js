@@ -8,4 +8,16 @@ angular.module('shortlyApp')
     console.log(data);
     $scope.links = data;
   });
+})
+.controller('shortenController', function($scope,$http){
+  $scope.createLink = function(){
+    $http({
+      method: 'POST',
+      url: '/links',
+      data: this.newLink
+    })
+    .success(function(data){
+      console.log(data);
+    });
+  };
 });

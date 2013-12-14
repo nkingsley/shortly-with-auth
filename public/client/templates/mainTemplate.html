@@ -1,5 +1,6 @@
 <ul>
-  <li ng-repeat="link in links track by link.id">
-    <a ng-href="{{link.base_url}}"><pre>{{link}}</pre></a>
+  <input type="text" ng-model="searchText" />
+  <li ng-repeat="link in links | orderBy:'visits':true | filter:searchText track by link.id">
+    <a ng-href="{{link.base_url}}/{{link.code}}">{{link.title}} - {{link.visits}}</a>
   </li>
 </ul>

@@ -18,6 +18,7 @@ angular.module('shortlyApp')
     })
     .success(function(data){
       console.log(data);
+      $scope.inputLink.$setPristine();
     });
   };
 });

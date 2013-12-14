@@ -1,4 +1,4 @@
-angular.module('shortlyApp', ['ngRoute'])
+angular.module('shortlyApp', ['ngRoute', 'ngSanitize'])
 .config(function($routeProvider) {
   $routeProvider
   .when('/', {

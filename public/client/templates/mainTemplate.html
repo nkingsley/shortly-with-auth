@@ -1,6 +1,11 @@
 <ul>
   <input type="text" ng-model="searchText" />
-  <li ng-repeat="link in links | orderBy:'visits':true | filter:searchText track by link.id">
+  <select ng-model = "selectOrder" >
+    <option value = "created_at">Most Recent</option>
+    <option value = "title">Alphabetical</option>
+    <option value = "visits">Most Popular</option>
+  </select>
+  <li ng-repeat="link in links | orderBy:selectOrder:true | filter:searchText track by link.id">
     <a ng-href="{{link.base_url}}/{{link.code}}">{{link.title}} - {{link.visits}}</a>
   </li>
 </ul>

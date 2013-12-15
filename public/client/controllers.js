@@ -31,4 +31,34 @@ angular.module('shortlyApp')
       $scope.inputLink.$setPristine();
     });
   };
+})
+.controller('clickHistoryController', function($scope, $http, $routeParams){
+  $http({
+    method: 'GET',
+    url: '/api/' + $routeParams.code
+  })
+  .success(function(data) {
+    console.log(data);
+    $scope.clicks = data;
+  });
+  $scope.data = [
+      {name: "Greg", score: 98},
+      {name: "Ari", score: 96},
+      {name: 'Q', score: 75},
+      {name: "Loser", score: 48}
+    ];
+})
+.controller('loginController', function($scope, authService){
+  $scope.login = function(){
+    authService.postLogin($scope.username,$scope.password)
+    .then(function(data){
+      console.log(data);
+    });
+  };
+  $scope.signup = function(){
+    authService.signUp($scope.username,$scope.password)
+    .then(function(data){
+      console.log(data);
+    });
+  };
 });

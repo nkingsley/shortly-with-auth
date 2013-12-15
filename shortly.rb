@@ -133,7 +133,7 @@ end
 post '/api/signup' do
     user = User.find_by_username(params[:username])
     unless user.nil?
-        [403, {error: 'User not found'}.to_json]
+        [403, {error: 'User Already Exists'}.to_json]
     else
         user = User.create username: params[:username], password: params[:password]
         if user.valid?
@@ -147,6 +147,11 @@ end
 get "/logout" do
   session[:identifier] = nil
   redirect "/"
+end
+
+get '/api/:url' do
+    link = Link.find_by_code params[:url]
+    link.clicks.to_json
 end
 
 get '/links' do
